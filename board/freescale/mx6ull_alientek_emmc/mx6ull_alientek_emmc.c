@@ -589,21 +589,21 @@ static void setup_iomux_fec(int fec_id)
 	{
 		imx_iomux_v3_setup_multiple_pads(fec1_pads,
 						 ARRAY_SIZE(fec1_pads));
-		gpio_direction_output(ENET1_RESET, 0);
+		gpio_direction_output(ENET1_RESET, 1);
 		gpio_set_value(ENET1_RESET, 0);
 		mdelay(20);
 		gpio_set_value(ENET1_RESET, 1);
-
 	}
 	else
 	{
 		imx_iomux_v3_setup_multiple_pads(fec2_pads,
 						 ARRAY_SIZE(fec2_pads));
-		gpio_direction_output(ENET2_RESET, 0);
+		gpio_direction_output(ENET2_RESET, 1);
 		gpio_set_value(ENET2_RESET, 0);
 		mdelay(20);
 		gpio_set_value(ENET2_RESET, 1);
 	}
+	mdelay(150);
 }
 
 int board_eth_init(bd_t *bis)
@@ -803,11 +803,13 @@ int board_late_init(void)
 
 int checkboard(void)
 {
+/*
 	if (is_mx6ull_9x9_evk())
 		puts("Board: MX6ULL 9x9 EVK\n");
 	else
 		puts("Board: MX6ULL 14x14 EVK\n");
-
+*/
+	puts("Board: MX6ULL ALIENTEK EMMC\n");
 	return 0;
 }
 
