@@ -136,7 +136,8 @@
 	"fdt_file=undefined\0" \
 	"fdt_addr=0x83000000\0" \
 	"boot_fdt=try\0" \
-	"ip_dyn=yes\0" \
+	"ip_dyn=no\0" \
+	"nfsroot=undefined\0" \
 	"panel=TFT43AB\0" \
 	"mmcdev="__stringify(CONFIG_SYS_MMC_ENV_DEV)"\0" \
 	"mmcpart=" __stringify(CONFIG_SYS_MMC_IMG_LOAD_PART) "\0" \
@@ -168,8 +169,8 @@
 		"fi;\0" \
 	"netargs=setenv bootargs console=${console},${baudrate} " \
 		CONFIG_BOOTARGS_CMA_SIZE \
-		"root=/dev/nfs " \
-	"ip=dhcp nfsroot=${serverip}:${nfsroot},v3,tcp\0" \
+		"root=/dev/nfs rw " \
+	"nfsroot=${serverip}:${nfsroot} ip=${ipaddr}:${serverip}:${gatewayip}:${netmask}::eth0:off\0" \
 		"netboot=echo Booting from net ...; " \
 		"run netargs; " \
 		"if test ${ip_dyn} = yes; then " \
