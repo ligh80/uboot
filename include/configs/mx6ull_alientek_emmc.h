@@ -143,7 +143,7 @@
 	"mmcpart=" __stringify(CONFIG_SYS_MMC_IMG_LOAD_PART) "\0" \
 	"mmcroot=" CONFIG_MMCROOT " rootwait rw\0" \
 	"mmcautodetect=yes\0" \
-	"mmcargs=setenv bootargs console=${console},${baudrate} " \
+	"mmcargs=setenv bootargs console=tty1 console=${console},${baudrate} " \
 		CONFIG_BOOTARGS_CMA_SIZE \
 		"root=${mmcroot}\0" \
 	"loadbootscript=" \
@@ -167,7 +167,7 @@
 		"else " \
 			"bootz; " \
 		"fi;\0" \
-	"netargs=setenv bootargs console=${console},${baudrate} " \
+	"netargs=setenv bootargs console=tty1 console=${console},${baudrate} " \
 		CONFIG_BOOTARGS_CMA_SIZE \
 		"root=/dev/nfs rw " \
 	"nfsroot=${serverip}:${nfsroot} ip=${ipaddr}:${serverip}:${gatewayip}:${netmask}::eth0:off\0" \
